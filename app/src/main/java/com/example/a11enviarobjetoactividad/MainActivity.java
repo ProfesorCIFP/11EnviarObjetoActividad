@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String NOMBRE = "Nombre";
     public static final String APELLIDO = "Apellido";
     public static final String EDAD = "Edad";
+    public static final String USUARIO = "Usuario";
 
     EditText etNombre, etApellido, etEdad;
     Button btnCancelar, btnRegistrar;
@@ -34,9 +35,13 @@ public class MainActivity extends AppCompatActivity {
         Integer edad = Integer.parseInt(etEdad.getText().toString());
 
         Intent intent = new Intent(MainActivity.this, DetalleActivity.class);
-        intent.putExtra(NOMBRE, nombre);
-        intent.putExtra(APELLIDO, apellido);
-        intent.putExtra(EDAD, edad);
+
+        Bundle bundleUsuario = new Bundle();
+        bundleUsuario.putString(NOMBRE, nombre);
+        bundleUsuario.putString(APELLIDO, apellido);
+        bundleUsuario.putInt(EDAD, edad);
+
+        intent.putExtra (USUARIO, bundleUsuario);
 
         startActivity(intent);
     }

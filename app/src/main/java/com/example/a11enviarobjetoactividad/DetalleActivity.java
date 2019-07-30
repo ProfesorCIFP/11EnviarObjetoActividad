@@ -21,9 +21,11 @@ public class DetalleActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent != null) {
-            String nombre = intent.getStringExtra(MainActivity.NOMBRE);
-            String apellido = intent.getStringExtra(MainActivity.APELLIDO);
-            Integer edad = intent.getIntExtra(MainActivity.EDAD, 0);
+            Bundle bundleUsuario = intent.getBundleExtra(MainActivity.USUARIO);
+
+            String nombre = bundleUsuario.getString(MainActivity.NOMBRE);
+            String apellido = bundleUsuario.getString(MainActivity.APELLIDO);
+            Integer edad = bundleUsuario.getInt(MainActivity.EDAD);
 
             tvNombre.setText("Nombre: " + nombre);
             tvApellido.setText("Apellido: " + apellido);

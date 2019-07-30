@@ -9,9 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String NOMBRE = "Nombre";
-    public static final String APELLIDO = "Apellido";
-    public static final String EDAD = "Edad";
     public static final String USUARIO = "Usuario";
 
     EditText etNombre, etApellido, etEdad;
@@ -36,13 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(MainActivity.this, DetalleActivity.class);
 
+        Usuario usuario = new Usuario(nombre, apellido, edad);
+
         Bundle bundleUsuario = new Bundle();
-        bundleUsuario.putString(NOMBRE, nombre);
-        bundleUsuario.putString(APELLIDO, apellido);
-        bundleUsuario.putInt(EDAD, edad);
+        bundleUsuario.putSerializable(USUARIO, usuario);
 
-        intent.putExtra (USUARIO, bundleUsuario);
-
+        intent.putExtras (bundleUsuario);
         startActivity(intent);
     }
 

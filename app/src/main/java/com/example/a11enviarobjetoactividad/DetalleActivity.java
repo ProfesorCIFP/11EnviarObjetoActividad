@@ -21,15 +21,13 @@ public class DetalleActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent != null) {
-            Bundle bundleUsuario = intent.getBundleExtra(MainActivity.USUARIO);
+            Bundle bundleUsuario = intent.getExtras();
 
-            String nombre = bundleUsuario.getString(MainActivity.NOMBRE);
-            String apellido = bundleUsuario.getString(MainActivity.APELLIDO);
-            Integer edad = bundleUsuario.getInt(MainActivity.EDAD);
+            Usuario usuario = (Usuario) bundleUsuario.getSerializable(MainActivity.USUARIO);
 
-            tvNombre.setText("Nombre: " + nombre);
-            tvApellido.setText("Apellido: " + apellido);
-            tvEdad.setText("Edad: " + edad.toString());
+            tvNombre.setText("Nombre: " + usuario.getNombre());
+            tvApellido.setText("Apellido: " + usuario.getApellido());
+            tvEdad.setText("Edad: " + usuario.getEdad().toString());
         }
     }
 }
